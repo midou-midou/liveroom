@@ -7,6 +7,7 @@ class Livevideo extends Component{
 		//这里的url指向的是流媒体服务器
 		this.state = {
 			srcurl: 'http://120.77.250.156:81/abcd/abcd.m3u8',
+			type: "application/x-mpegurl",
 			ID: 'reactflowplayer',
 			initScript: 'https://releases.flowplayer.org/7.2.7/flowplayer.min.js',
 			HlsUrl: 'https://cdn.jsdelivr.net/npm/hls.js@0.11.0/dist/hls.light.min.js',
@@ -26,8 +27,8 @@ class Livevideo extends Component{
 				styleUrl={this.state.StyleUrl}
 				sources={[
 					{
-						type: "application/x-mpegurl",
-						src: "http://120.77.250.156:81/abcd/abcd.m3u8"
+						type: this.state.type,
+						src: this.state.srcurl
 					}
 				]}
 			/>

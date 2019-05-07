@@ -1,13 +1,14 @@
 import { 
 	HANDLEMESSAGE,
  	CLEARUSERSENDMESSAGE,
- 	HANDLE_LOGIN_USERNAME	
+ 	HANDLE_LOGIN_USERNAME,
+ 	UPDATE_LIST_DATA	
  } 
  from './actionType'
 
-export const getsendmessageaction = (content) => ({
+export const getsendmessageaction = (meg) => ({
 	type: HANDLEMESSAGE,
-	content
+	meg
 })
 
 export const getcleartextareaaction = (value) => ({
@@ -19,4 +20,9 @@ export const gethandleloginbuttonaction = (value, loginstate) => ({
 	type: HANDLE_LOGIN_USERNAME,
 	value,
 	loginstate
+})
+
+export const getupdatelistdataaction = (value) => ({
+	type: UPDATE_LIST_DATA,
+	value
 })

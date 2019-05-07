@@ -2,7 +2,9 @@ import React, {Component, Fragment} from 'react'
 import { Input, Button } from 'antd'
 import store from './store/index'
 import { gethandleloginbuttonaction } from './store/actionCreate'
+
 import 'antd/dist/antd.css'
+import './loginbg.css'
 
 class Login extends Component{
 	constructor(props){
@@ -19,15 +21,21 @@ class Login extends Component{
 			<Fragment>
 				<div>
 					<Input 
-						placeholder="输入用户名就可以和主播主播聊天啦"
+						className="loginInput"
+						placeholder="输入用户名就可以和主播聊天啦"
 						value={this.state.inputValue}
 						onChange={this.handleinputvalue}
 					/>
-					<Button
-						onClick={
-							this.handleloginbutton
-						}
-					>Login</Button>
+					<div className="loginButton">
+						<Button
+							block
+							type="primary"
+							className="loginButton"
+							onClick={
+								this.handleloginbutton
+							}
+						>Login</Button>
+					</div>
 				</div>
 			</Fragment>
 		);
@@ -40,14 +48,8 @@ class Login extends Component{
 	}
 
 	handleloginbutton(){
-		// const action = {
-		// 	type: 'handle_login_username',
-		// 	value: this.state.inputValue,
-		// 	state: true
-		// };
-		const action = gethandleloginbuttonaction(this.state.username, true);
+		const action = gethandleloginbuttonaction(this.state.inputValue, true);
 		store.dispatch(action);
-		//const action = gethandleloginbuttonaction(this.state.inputValue, true);
 	}
 
 }

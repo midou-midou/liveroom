@@ -4,11 +4,11 @@ import Chatbox from './Chatbox';
 //import SendMegsbox from './SendMegsbox';
 import Livetitle from './Livetitle';
 import Livevideo from './Livevideo';
-import Componentcontain from './Componentcontain';
+import Transmitdata from './Tramsmitdata'
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(<Chatbox />, document.getElementById('chatbox'));
-ReactDOM.render(<Componentcontain />, document.getElementById('sendbox'));
+ReactDOM.render(<Transmitdata />, document.getElementById('sendbox'));
 ReactDOM.render(<Livetitle />, document.getElementById('menu'));
 ReactDOM.render(<Livevideo />, document.getElementById('reactflowplayer'));
 

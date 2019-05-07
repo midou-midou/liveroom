@@ -1,85 +1,86 @@
 import React, { Component, Fragment } from 'react'
-import { Input } from 'antd'
-import { Button } from 'antd'
+import { Input, Button, Row, Col } from 'antd'
 import Store from './store/index'
-import { getsendmessageaction } from './store/actionCreate'
+import { getsendmessageaction, getcleartextareaaction } from './store/actionCreate'
+
 import 'antd/dist/antd.css'
+import './sendmegboxbg.css'
 
 const { TextArea } = Input;
+var meg;
 
 class SendMegsBox extends Component{
 	constructor(props){
-		super(props)
+		super(props);
 		this.state = {
 			content: ''
 		}
-		this.setmessage = this.setmessage.bind(this)
-		this.sendmessage = this.sendmessage.bind(this)
-		this.cleartextarea = this.cleartextarea.bind(this)
-
+		this.setmessage = this.setmessage.bind(this);
+		this.sendmessage = this.sendmessage.bind(this);
+		this.cleartextarea = this.cleartextarea.bind(this);
 	}
 
 	render(){
 		return(
 		<Fragment>
-			{/*显示消息框的背景-直接通过store来传递值
-			<Chatbox
-				meg={this.state.message}
-			/>*/}
 			{/*发送框和发送按钮*/}
+
 			<TextArea
-				rows={4}
+				rows={3}
 				id="sendTextArea"
 				placeholder="请输入聊天内容"
 				size="large"
-				value={this.state.content}
+				className="sendboxTextArea"
 				onChange={this.setmessage}
+				value={this.state.content}
 			/>
-			<div style={{margin: '5px'}}>
-			<Button 
-				id="sendmessage_btn"
-				type="primary"
-				onClick={this.sendmessage}
-			>
-			发送
-			</Button>
-			</div>
-			<Button
-				id="clearTextArea_btn"
-				type="primary"
-				onClick={this.cleartextarea}
-			>
-			清除
-			</Button>
+			<Row>
+				<Col span={14}></Col>
+				<Col span={5}>
+					<div className="sendboxDivMarginAutoButton">
+					<Button 
+						id="sendmessage_btn"
+						type="primary"
+						className="sendboxSendButton"
+						onClick={this.sendmessage}
+					>
+						发送
+					</Button>
+					</div>
+				</Col>
+				<Col span={5}>
+					<div className="sendboxDivMarginAutoButton">
+					<Button
+						id="clearTextArea_btn"
+						type="primary"
+						className="sendboxSendButton"
+						onClick={this.cleartextarea}
+					>
+						清除
+					</Button>
+					</div>
+				</Col>
+			</Row>
 		</Fragment>
 		);
 	}
 
 	setmessage(e){
+		meg = e.target.value;
 		this.setState({
-			content: e.target.value,
+			content: e.target.value
 		});
 	}
 
 	sendmessage(){
-		// const action = {
-		// 	type: 'handlemessage',
-		// 	value: this.state.content
-		// }
-		// Store.dispatch(action);
-		const action = getsendmessageaction(this.state.content);
-		Store.dispatch(action);
+		this.props.emitMegtoServer(this.state.content);
 		this.setState({
 			content: ''
 		});
-
 	}
 
 	cleartextarea(){
-		const action = {
-			type: 'clearUserSendMessage',
-			value: ''
-		}
+		const action = getcleartextareaaction('');
 		Store.dispatch(action);
 	}
 

@@ -12,14 +12,14 @@ class Componentcontain extends Component{
 	}
 
 	render(){
-		if (this.state.meslist[0].firstloginstate === false) {
+		if (this.state.userinfo.isfirstlogin === false) {
 			return (
 				<Fragment>
 					<Login/>
 				</Fragment>
 				);
 		}
-		if (this.state.meslist[0].firstloginstate === true) {
+		if (this.state.userinfo.isfirstlogin === true) {
 			return (
 				<Fragment>
 					<SendMegsbox />
