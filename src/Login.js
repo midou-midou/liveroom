@@ -25,6 +25,7 @@ class Login extends Component{
 						placeholder="输入用户名就可以和主播聊天啦"
 						value={this.state.inputValue}
 						onChange={this.handleinputvalue}
+						onPressEnter={this.handleloginbutton}
 					/>
 					<div className="loginButton">
 						<Button

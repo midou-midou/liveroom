@@ -19,7 +19,9 @@ const defaultstate = {
 			username: 'Rainbow Dash',
 			message: '来自PonyVillage'
 		}
-	]
+	],
+	//当前的在线观看直播的人数（和服务器建立的连接数，并不一定是准确的在线观看人数）
+	livePeople: 0
 };
 
 export default (state = defaultstate, action) => {
@@ -41,7 +43,8 @@ export default (state = defaultstate, action) => {
 	}
 	if (action.type === UPDATE_LIST_DATA) {
 		const newState = JSON.parse(JSON.stringify(state));
-		newState.meslist = action.value;
+		newState.meslist = action.value.meglist;
+		newState.livePeople = action.value.livePeople;
 		return newState;
 	}
 	return state;

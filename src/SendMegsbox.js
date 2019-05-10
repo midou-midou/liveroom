@@ -24,7 +24,6 @@ class SendMegsBox extends Component{
 		return(
 		<Fragment>
 			{/*发送框和发送按钮*/}
-
 			<TextArea
 				rows={3}
 				id="sendTextArea"
@@ -32,34 +31,25 @@ class SendMegsBox extends Component{
 				size="large"
 				className="sendboxTextArea"
 				onChange={this.setmessage}
+				onPressEnter={this.sendmessage}
 				value={this.state.content}
 			/>
 			<Row>
 				<Col span={14}></Col>
-				<Col span={5}>
+				<Col span={10}>
 					<div className="sendboxDivMarginAutoButton">
 					<Button 
 						id="sendmessage_btn"
 						type="primary"
 						className="sendboxSendButton"
 						onClick={this.sendmessage}
+						ghost
 					>
 						发送
 					</Button>
 					</div>
 				</Col>
-				<Col span={5}>
-					<div className="sendboxDivMarginAutoButton">
-					<Button
-						id="clearTextArea_btn"
-						type="primary"
-						className="sendboxSendButton"
-						onClick={this.cleartextarea}
-					>
-						清除
-					</Button>
-					</div>
-				</Col>
+				
 			</Row>
 		</Fragment>
 		);

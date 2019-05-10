@@ -9,8 +9,6 @@ import './loginbg.css'
  
 const socket = require('socket.io-client')("http://120.77.250.156:83");
 
-//这里的meg是从store中获取的，如果当前用户的meg没有被更改，就不会执行上传数据到数据库的方法
-
 class Tramsmitdata extends Component{
 	
 	constructor(props){

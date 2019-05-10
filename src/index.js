@@ -4,13 +4,15 @@ import Chatbox from './Chatbox';
 //import SendMegsbox from './SendMegsbox';
 import Livetitle from './Livetitle';
 import Livevideo from './Livevideo';
-import Transmitdata from './Tramsmitdata'
+import Transmitdata from './Tramsmitdata';
+import Livepeoplenum from './Livepeoplenum';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(<Chatbox />, document.getElementById('chatbox'));
 ReactDOM.render(<Transmitdata />, document.getElementById('sendbox'));
 ReactDOM.render(<Livetitle />, document.getElementById('menu'));
 ReactDOM.render(<Livevideo />, document.getElementById('reactflowplayer'));
+ReactDOM.render(<Livepeoplenum />, document.getElementById('livePeople'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

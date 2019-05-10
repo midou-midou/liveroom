@@ -1,14 +1,15 @@
 .sendboxTextArea{
-	border: 1px solid #DCDCDC;
+	border: 0px solid #DCDCDC;
 	border-radius: 4px;
-	background-color: #FFF5EE;
-
+	background-color: #FFFAF0;
 }
 .sendboxSendButton{
+	margin: 5px 0 -6px 0;
 	position: relative;
-	right: -10px;
-	margin: 2px 0;
+	right: -75px;
 }
-.sendboxDivMarginAutoButton{
-	margin: auto 0;
+.textareaAndButtonbg{
+	border: 0px solid #DCDCDC;
+	border-radius: 4px;
+	background-color: #FFF5EE;
 }
