@@ -4,5 +4,5 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 直接用git下载源码
 
-### 现在的版本是v0.1
+### 现在的版本是v0.2
 ### [直播间链接](http://live.xiaoblogs.cn:81/index.html)
