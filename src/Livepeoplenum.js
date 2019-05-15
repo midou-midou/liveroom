@@ -10,7 +10,6 @@ class Livepeoplenum extends Component{
 	}
 
 	render(){
-		console.log(this.state.livePeople);
 		return (
 			<Fragment>
 				{this.state.livePeople}

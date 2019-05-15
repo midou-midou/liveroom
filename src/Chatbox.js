@@ -24,7 +24,7 @@ class Chatbox extends Component{
 			<div className="demo-infinite-container">
 				<InfiniteScroll
 					initialLoad={false}
-					hasMore={this.state.hasMoreState && !this.state.loading}
+					hasMore={this.state.hasMoreState}
 					pageStart={0}
 					loadMore={this.handleloadmorestate}
 					useWindow={false}
@@ -64,12 +64,15 @@ class Chatbox extends Component{
 	//?有问题
 	handleloadmorestate(){
 		//var list = this.state.meslist;
+		console.log("handleloadmoerestate执行");
 		if (true) {
 			this.setState({
 				hasMoreState: true,
 				loading: false
 			})
 		}
+
+
 		
 	}
 
