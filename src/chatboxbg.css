@@ -10,8 +10,8 @@
   border-color: white;
   background-color: #FFE4E1;
   overflow: auto;
-  padding: 8px 24px;
-  height: 300px;
+  padding: 8px 8px;
+  height: 382px;
 }
 .demo-loading-container {
   position: absolute;

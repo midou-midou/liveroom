@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import ReactFlowPlayer from 'react-flow-player'
+import './Livevideocss.css'
 
 class Livevideo extends Component{
 	constructor(props){
@@ -12,19 +13,23 @@ class Livevideo extends Component{
 			initScript: 'https://releases.flowplayer.org/7.2.7/flowplayer.min.js',
 			HlsUrl: 'https://cdn.jsdelivr.net/npm/hls.js@0.11.0/dist/hls.light.min.js',
 			StyleUrl: 'https://releases.flowplayer.org/7.2.7/skin/skin.css',
-			AspectRatio: '9/16'
+			defaultstyleurl: '',
+			AspectRatio: '9/16',
+			text: "现在主播不在哦"
 		};
 	}
 	render(){
 		console.log(this.state.initScript);
 		return(
 			<ReactFlowPlayer
+				id="videoplayer"
 				playerInitScript={this.state.initScript}
 				playerId={this.state.ID}
 				hlsUrl={this.state.HlsUrl}
 				hlsPlugin={true}
 				live={true}
 				styleUrl={this.state.StyleUrl}
+				seekingText={this.state.text}
 				sources={[
 					{
 						type: this.state.type,

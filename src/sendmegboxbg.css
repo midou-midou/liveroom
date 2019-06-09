@@ -13,3 +13,8 @@
 	border-radius: 4px;
 	background-color: #FFF5EE;
 }
+.audiostyle{
+	border: 1px solid green;
+	width: 150px;
+	height: 50px;
+}
