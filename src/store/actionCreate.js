@@ -2,7 +2,8 @@ import {
 	HANDLEMESSAGE,
  	CLEARUSERSENDMESSAGE,
  	HANDLE_LOGIN_USERNAME,
- 	UPDATE_LIST_DATA	
+	UPDATE_LIST_DATA,
+	CHANGE_VIDEOJS_SRC
  } 
  from './actionType'
 
@@ -26,3 +27,9 @@ export const getupdatelistdataaction = (value) => ({
 	type: UPDATE_LIST_DATA,
 	value
 })
+
+export const changevideojssrc = (value) => ({
+	type: CHANGE_VIDEOJS_SRC,
+	value
+})
+

@@ -1,0 +1,91 @@
+import React, { Component, Fragment } from 'react'
+import { BrowserRouter, Route } from 'react-router-dom'
+import { GlobalStyled } from './style.js'
+
+import './Announcement.css'
+
+const socket = require('socket.io-client')("http://120.77.250.156:8085");
+
+class Announcement extends Component{
+    constructor(props){
+        super(props);
+        this.state = {
+            title: ''
+        }
+        this.editTitle=this.editTitle.bind(this);
+        this.updateTitle=this.updateTitle.bind(this);
+        this.blurFocus=this.blurFocus.bind(this);
+        this.emitTitletoServer = this.emitTitletoServer.bind(this);
+    }
+
+    render(){
+        return(
+            <BrowserRouter>
+                <Fragment>
+                    <GlobalStyled />
+                    <Route path='/' exact render={() =>
+                        <div id="announce-div" className="announce-div-style">
+                            <span id="announce-title" className="announce-title-style">{this.state.title}</span>
+                        </div>
+                    }></Route>
+                    <Route path='/backstage' exact render={() =>
+                        <div id="announce-div" className="announce-div-style">
+                            <span id="announce-title" className="announce-title-style">{this.state.title}</span>
+                            <input id="announce-title-edit" 
+                                className="announce-title-edit-style"                                
+                                onBlur={this.blurFocus}
+                                onChange={this.updateTitle}                                
+                                ></input>
+                            <button id="announce-title-edit-btn" className="announce-title-edit-btn-style" onClick={this.editTitle}>
+                                <svg className="icon-edit-title" aria-hidden="true">
+                                    <use xlinkHref="#icon-pencil-ruler"></use>
+                                </svg>                              
+                            </button>
+                        </div>
+                    }></Route>
+                </Fragment>
+            </BrowserRouter>
+        );
+    }
+
+    componentDidMount(){
+		socket.on('server', (data) => {
+			if(data === null){
+				console.log("data is null");
+			}
+			else if(this.state.title!==data.announce_title){
+				this.setState({
+                    title: data.announce_title
+                })
+			}
+		})
+	}
+
+    editTitle(){
+        var inputDOM=document.getElementById('announce-title-edit');
+        var spanDOM=document.getElementById('announce-title');
+        inputDOM.style.display="block";
+        inputDOM.value=spanDOM.innerHTML;
+    }
+
+    updateTitle(e){
+        this.setState({
+            title: e.target.value
+        })
+    }
+
+    blurFocus(){
+        var inputDOM=document.getElementById('announce-title-edit');
+        inputDOM.style.display="none";
+        this.emitTitletoServer(this.state.title);
+    }
+
+    emitTitletoServer(data){
+		var obj = {
+			announce_title: data
+        }
+        socket.emit('clienttitle', obj);
+	}
+
+}
+export default Announcement

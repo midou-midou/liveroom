@@ -1,9 +1,9 @@
 import React, {Component, Fragment} from 'react'
-import { Input, Button } from 'antd'
+//import ReactDOM from 'react-dom';
 import store from './store/index'
+import { message } from 'antd'
 import { gethandleloginbuttonaction } from './store/actionCreate'
 
-import 'antd/dist/antd.css'
 import './loginbg.css'
 
 class Login extends Component{
@@ -19,25 +19,18 @@ class Login extends Component{
 	render(){
 		return (
 			<Fragment>
-				<div>
-					<Input 
+					<input 
 						className="loginInput"
-						placeholder="输入用户名就可以和主播聊天啦"
+						placeholder="请把用户名输到这里哦"
 						value={this.state.inputValue}
 						onChange={this.handleinputvalue}
-						onPressEnter={this.handleloginbutton}
 					/>
-					<div className="loginButton">
-						<Button
-							block
-							type="primary"
+						<button
 							className="loginButton"
 							onClick={
 								this.handleloginbutton
 							}
-						>Login</Button>
-					</div>
-				</div>
+						>Login/登录</button>
 			</Fragment>
 		);
 	}
@@ -50,7 +43,12 @@ class Login extends Component{
 
 	handleloginbutton(){
 		const action = gethandleloginbuttonaction(this.state.inputValue, true);
-		store.dispatch(action);
+		if(this.state.inputValue === ''){
+			//ReactDOM.render(<Alert type="error" message="Error text" banner />, document.getElementById('error'));
+			message.error("要把你的名字告诉我呀!");
+		}else{
+			store.dispatch(action);
+		}
 	}
 
 }

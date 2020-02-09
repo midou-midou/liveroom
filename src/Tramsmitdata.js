@@ -1,13 +1,13 @@
 import React, { Component, Fragment } from 'react';
-import Socketioclient from 'socket.io-client';
 import SendMegsbox from './SendMegsbox';
 import Login from './Login';
 import store from './store/index';
-import { getupdatelistdataaction } from './store/actionCreate'
+import { getupdatelistdataaction, changevideojssrc } from './store/actionCreate'
 
 import './loginbg.css'
  
 const socket = require('socket.io-client')("http://120.77.250.156:83");
+const sockettitle = require('socket.io-client')("http://120.77.250.156:8085");
 
 class Tramsmitdata extends Component{
 	
@@ -23,12 +23,22 @@ class Tramsmitdata extends Component{
 	componentDidMount(){
 		socket.on('server', (data) => {
 			if (data === null){
-				alert("data is null");
+				console.log("data is null");
 			}
-			else{
+			else if(this.state.meslist.length!==data.meglist.length||this.state.livePeople!==data.livePeople){
 					const action = getupdatelistdataaction(data);
 					store.dispatch(action);
 				}
+		});
+		sockettitle.on('server', (data) => {
+			if(data === null){
+				console.log("data is null");
+			}
+			else if(this.state.videojs_source_src!==data.videojsurl){
+				const action = changevideojssrc(data.videojsurl);
+				store.dispatch(action);
+			}
+
 		});
 	}
 
@@ -36,7 +46,7 @@ class Tramsmitdata extends Component{
 		this.setState(store.getState());
 	}
 
-	//将user发送的消息上传到数据库，后台和前端的上传消息的唯一API
+	//将user发送的消息上传到后端，后台和前端的上传消息的API
 	emitMegtoServer(data){
 		var object = {
 			username: this.state.userinfo.username,
@@ -50,9 +60,7 @@ class Tramsmitdata extends Component{
 		if (this.state.userinfo.isfirstlogin === false) {
 			return (
 				<Fragment>
-					<div className="loginBackground">
 						<Login />
-					</div>
 				</Fragment>
 				);
 		};

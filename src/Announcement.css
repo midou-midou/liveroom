@@ -1,0 +1,32 @@
+@import "https://fonts.googleapis.com/css?family=Economica";
+div#announce-div.announce-div-style{
+    display: flex;
+    width: 100%;
+    position: relative;
+}
+span#announce-title.announce-title-style{
+    position: absolute;
+    top: 1em;
+    font-size: 2em;
+    padding: 0 0.5em;
+    font-family: 'Economica','AaFangmeng', sans-serif;
+    font-weight: 450;
+}
+button#announce-title-edit-btn.announce-title-edit-btn-style{
+    outline: none;
+    border: 0;
+    background-color: transparent;
+    position: absolute;
+    right: 0;
+    top: 2.7em;
+}
+input#announce-title-edit.announce-title-edit-style{
+    display: none;
+    position: absolute;
+    top: 1em;
+    width: 92%;
+    font-size: 2em;
+    margin: 0 0.5em;
+    font-family: 'Economica','AaFangmeng', sans-serif;
+    font-weight: 450;
+}

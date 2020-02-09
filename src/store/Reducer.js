@@ -2,7 +2,8 @@ import {
 	HANDLEMESSAGE,
  	CLEARUSERSENDMESSAGE,
  	HANDLE_LOGIN_USERNAME,
- 	UPDATE_LIST_DATA	
+	UPDATE_LIST_DATA,
+	CHANGE_VIDEOJS_SRC
  } 
  from './actionType'
 
@@ -17,11 +18,12 @@ const defaultstate = {
 	meslist: [
 		{
 			username: 'Rainbow Dash',
-			message: '来自PonyVillage'
+			message: 'from PonyVillage'
 		}
 	],
 	//当前的在线观看直播的人数（和服务器建立的连接数，并不一定是准确的在线观看人数）
-	livePeople: 0
+	livePeople: 0,
+	videojs_source_src: ""
 };
 
 export default (state = defaultstate, action) => {
@@ -45,6 +47,12 @@ export default (state = defaultstate, action) => {
 		const newState = JSON.parse(JSON.stringify(state));
 		newState.meslist = action.value.meglist;
 		newState.livePeople = action.value.livePeople;
+		newState.announce_title = action.value.announce_title;
+		return newState;
+	}
+	if (action.type === CHANGE_VIDEOJS_SRC) {
+		const newState = JSON.parse(JSON.stringify(state));
+		newState.videojs_source_src = action.value;
 		return newState;
 	}
 	return state;
