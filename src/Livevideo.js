@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { Component, Fragment } from 'react'
 import { BrowserRouter, Route } from 'react-router-dom'
 import { message } from 'antd'
@@ -11,15 +12,32 @@ const socket = require('socket.io-client')("http://120.77.250.156:8085");
 
 const formdata = new FormData();
 const url = 'http://120.77.250.156:8086';
+=======
+import React, { Component } from 'react'
+import ReactFlowPlayer from 'react-flow-player'
+import './Livevideocss.css'
+>>>>>>> 61d9dbc3267fe64cb03d79c226441d425322161a
 
 class Livevideo extends Component{
 	constructor(props){
 		super(props);
 		this.state = {
+<<<<<<< HEAD
 			video_srcurl: "http://imgdata.xiaoblogs.cn:86/Skystrike.mp4",
 			live_srcurl: 'http://live.xiaoblogs.cn:81/abcd/abcd.m3u8',
 			post: "http://imgdata.xiaoblogs.cn:86/liveroombg.png",
 			clientVideoSrc: "http://live.xiaoblogs.cn:81/abcd/abcd.m3u8"
+=======
+			srcurl: 'http://live.xiaoblogs.cn:81/abcd/abcd.m3u8',
+			type: "application/x-mpegurl",
+			ID: 'reactflowplayer',
+			initScript: 'https://releases.flowplayer.org/7.2.7/flowplayer.min.js',
+			HlsUrl: 'https://cdn.jsdelivr.net/npm/hls.js@0.11.0/dist/hls.light.min.js',
+			StyleUrl: 'https://releases.flowplayer.org/7.2.7/skin/skin.css',
+			defaultstyleurl: '',
+			AspectRatio: '9/16',
+			text: "现在主播不在哦"
+>>>>>>> 61d9dbc3267fe64cb03d79c226441d425322161a
 		};
 		this.showPanelControl=this.showPanelControl.bind(this);
 		this.closePanel=this.closePanel.bind(this);
@@ -34,6 +52,7 @@ class Livevideo extends Component{
 	}
 	render(){
 		return(
+<<<<<<< HEAD
 			<BrowserRouter>
 				<Fragment>
 					<GlobalStyled />
@@ -121,6 +140,24 @@ class Livevideo extends Component{
 					}></Route>
 				</Fragment>
 			</BrowserRouter>
+=======
+			<ReactFlowPlayer
+				id="videoplayer"
+				playerInitScript={this.state.initScript}
+				playerId={this.state.ID}
+				hlsUrl={this.state.HlsUrl}
+				hlsPlugin={true}
+				live={true}
+				styleUrl={this.state.StyleUrl}
+				seekingText={this.state.text}
+				sources={[
+					{
+						type: this.state.type,
+						src: this.state.srcurl
+					}
+				]}
+			/>
+>>>>>>> 61d9dbc3267fe64cb03d79c226441d425322161a
 		);
 	}
 
