@@ -47,7 +47,11 @@ React应用构建
     `pm2 start socket-backstage.js`   
 4. 后台OK了   
 
-### 3. 之后就通过url访问吧   
+### 3. 之后就通过url访问吧    
+> 如果要访问后台配置直播间的页面要在url后面加上/backstage   
+> eg.http://yoururl/ 这个是普通用户访问的页面   
+> eg.http://yoururl/backstage 这个是主播访问的页面   
+
 
 ## 更新说明   
 ### 1. 直播间3.0   
