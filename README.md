@@ -1,4 +1,4 @@
-# [liveroom_v3.0](http://live.xiaoblogs.cn:81)   
+# [liveroom_v3.0](http://live.xiaoblogs.cn)   
 
 #### 直播间的版本号从0.x.x变为x.x.x   
 
@@ -93,4 +93,4 @@ React应用构建
 
 #### 现在的版本是v3.0   
 
-#### [直播间链接](http://live.xiaoblogs.cn:81)
+#### [直播间链接](http://live.xiaoblogs.cn)
