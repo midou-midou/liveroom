@@ -1,6 +1,10 @@
-var uploadserver = require('http').createServer(onRequest);
-var socketioserver = require('http').createServer(handle);
 var fs = require('fs');
+const httpsOption = {
+	key: fs.readFileSync("/usr/local/nginx/cert/3464649_live.xiaoblogs.cn.key"),
+	cert: fs.readFileSync("/usr/local/nginx/cert/3464649_live.xiaoblogs.cn.pem")
+}
+var uploadserver = require('https').createServer(httpsOption, onRequest);
+var socketioserver = require('https').createServer(httpsOption, handle);
 var formdata = require('formidable');
 var io = require('socket.io')(socketioserver);
 var audioIndex = 0;
@@ -125,5 +129,5 @@ io.on('connect', (socket) => {
 	//}, 3000);
 	setInterval(() => {
 		socket.emit('server',chatdata);	
-	}, 2500)
+	}, 1500)
 });

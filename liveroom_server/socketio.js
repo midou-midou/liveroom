@@ -1,8 +1,18 @@
+var fs = require('fs');
+const httpsOption = {
+	key: fs.readFileSync("/usr/local/nginx/cert/3464649_live.xiaoblogs.cn.key"),
+	cert: fs.readFileSync("/usr/local/nginx/cert/3464649_live.xiaoblogs.cn.pem")
+}
+
 var socketioserver = require('http').createServer(handle);
-var io = require('socket.io')(socketioserver);
+var serverhttps = require('https').createServer(httpsOption, handle);
+var io = require('socket.io')(serverhttps);
 var audioIndex = 0;
 
-socketioserver.listen(83);
+//socketioserver.listen(83);
+
+
+serverhttps.listen(83);
 
 //返回200状态码给客户端表示建立连接成功
 function handle(req, res){
