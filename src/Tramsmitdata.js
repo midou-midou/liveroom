@@ -6,8 +6,8 @@ import { getupdatelistdataaction, changevideojssrc } from './store/actionCreate'
 
 import './loginbg.css'
  
-const socket = require('socket.io-client')("http://120.77.250.156:83");
-const sockettitle = require('socket.io-client')("http://120.77.250.156:8085");
+const socket = require('socket.io-client')("https://live.xiaoblogs.cn:83");
+const sockettitle = require('socket.io-client')("https://live.xiaoblogs.cn:8085");
 
 class Tramsmitdata extends Component{
 	

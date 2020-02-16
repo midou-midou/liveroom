@@ -70,7 +70,6 @@ textarea:focus::-moz-placeholder { /* Mozilla Firefox 19+ 适配火狐 */
 textarea:focus:-ms-input-placeholder { /* Internet Explorer 10+  适配ie*/
     color: #BDCADA;
 }
-<<<<<<< HEAD
 button.sendboxSendButton{
 	border: none;
 	background: transparent;
@@ -79,15 +78,4 @@ button.sendboxSendButton{
 	position: absolute;
 	margin-top: 1em;
 	right: 0;
-=======
-.textareaAndButtonbg{
-	border: 0px solid #DCDCDC;
-	border-radius: 4px;
-	background-color: #FFF5EE;
-}
-.audiostyle{
-	border: 1px solid green;
-	width: 150px;
-	height: 50px;
->>>>>>> 61d9dbc3267fe64cb03d79c226441d425322161a
 }

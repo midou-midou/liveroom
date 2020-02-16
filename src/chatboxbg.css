@@ -4,7 +4,6 @@ div.list-container {
   border-radius: 0;
   background-color: transparent;
   overflow: auto;
-<<<<<<< HEAD
 }
 div.scrollbar{
   width : 30px;
@@ -49,14 +48,3 @@ span#list-item-content.list-item-content-style{
   color: black;
   font-weight: 650;
 }
-=======
-  padding: 8px 8px;
-  height: 382px;
-}
-.demo-loading-container {
-  position: absolute;
-  bottom: 40px;
-  width: 100%;
-  text-align: center;
-}
->>>>>>> 61d9dbc3267fe64cb03d79c226441d425322161a
