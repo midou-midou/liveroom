@@ -10,7 +10,8 @@ class Announcement extends Component{
     constructor(props){
         super(props);
         this.state = {
-            title: ''
+            title: '',
+            Temptitle: ''
         }
         this.editTitle=this.editTitle.bind(this);
         this.updateTitle=this.updateTitle.bind(this);
@@ -52,7 +53,7 @@ class Announcement extends Component{
 		socket.on('server', (data) => {
 			if(data === null){
 				console.log("data is null");
-			}
+            }
 			else if(this.state.title!==data.announce_title){
 				this.setState({
                     title: data.announce_title
@@ -70,14 +71,14 @@ class Announcement extends Component{
 
     updateTitle(e){
         this.setState({
-            title: e.target.value
+            Temptitle: e.target.value
         })
     }
 
     blurFocus(){
         var inputDOM=document.getElementById('announce-title-edit');
         inputDOM.style.display="none";
-        this.emitTitletoServer(this.state.title);
+        this.emitTitletoServer(this.state.Temptitle);
     }
 
     emitTitletoServer(data){
