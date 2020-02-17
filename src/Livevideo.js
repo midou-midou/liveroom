@@ -42,7 +42,7 @@ class Livevideo extends Component{
 							<video
 								ref={(video) => { this.video = video; }}
 								id="player"
-								className="video-js vjs-big-play-centered  vjs-fluid"
+								className="video-js vjs-theme-sea vjs-big-play-centered  vjs-fluid"
 								width="100%"
 								height="100%"
 								controls
