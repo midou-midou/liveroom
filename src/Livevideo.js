@@ -49,7 +49,7 @@ class Livevideo extends Component{
 								preload="auto"
 								poster={this.state.post} 
 								webkit-playsinline="true"
-								playsInline="true"
+								playsInline={true}
 								data-setup='{}'>
 								<source id="videojs-src" src={this.state.clientVideoSrc} type=""></source>
 							</video>
@@ -144,9 +144,9 @@ class Livevideo extends Component{
 			mode: 'no-cors',
 			body: formdata,
 		}).then(response => {
-			message.success("图片上传成功啦,刷新下浏览器看看自己的海报吧!(●ˇ∀ˇ●)");
+			message.success("图片上传成功")
 		}).catch(error => {
-			message.error("由于不可抗力,图片上传失败X﹏X")
+			message.error("图片上传失败")
 		});		
 	}
 

@@ -6,12 +6,14 @@ import Transmitdata from './Tramsmitdata';
 import Livepeoplenum from './Livepeoplenum';
 import Announcement from './Announcement';
 import Gotobottom from './Gotobottom';
+import Danmaku from './danmaku'
 import './static/liveroom_icon/iconfont';
 import * as serviceWorker from './serviceWorker';
 
 //ReactDOM.render(<GlobalStyled />, document.getElementById('liveroom'));
 ReactDOM.render(<Chatbox />, document.getElementById('chatbox'));
 ReactDOM.render(<Transmitdata />, document.getElementById('sendbox'));
+ReactDOM.render(<Danmaku />, document.getElementById('danmaku-item'));
 ReactDOM.render(<Livevideo />, document.getElementById('reactflowplayer'));
 ReactDOM.render(<Livepeoplenum />, document.getElementById('livePeople'));
 ReactDOM.render(<Announcement />, document.getElementById('announcement'));

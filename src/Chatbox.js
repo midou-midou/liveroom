@@ -25,37 +25,6 @@ class Chatbox extends Component{
 		return (
 			<Fragment>
 				<div id="list-container" className="list-container" onScroll={this.listenScrollbar}>
-					{/* 使用antdesign中的组件 
-					<InfiniteScroll
-						initialLoad={false}
-						hasMore={this.state.hasMoreState}
-						pageStart={0}
-						loadMore={this.handleloadmorestate}
-						useWindow={false}
-						>
-						<List
-							size="small"
-							itemLayout="horizontal"
-							dataSource={this.state.meslist}
-							renderItem={item => ( 
-								<List.Item>
-									<List.Item.Meta
-										title={<div id="list-item" className="list-item-style">
-													<span id="list-item-name" className="list-item-name-style">{item.username}</span>说：
-													<span id="list-item-content" className="list-item-content-style">{item.usermeg}</span>
-												</div>}
-									/>
-								</List.Item>
-							)}
-						/>
-						{
-							this.state.hasMoreState && this.state.loading && (
-								<div className="demo-loading-container">
-									<Spin />
-								</div>	
-							)
-						}
-					</InfiniteScroll> */}
 					<div id="div-scrollbar" className="scrollbar" ></div>
 					{/* 通过map()动态的添加组件 */}
 					{
@@ -90,18 +59,6 @@ class Chatbox extends Component{
 			DOMb.style.display="block";
 		}	
 	}
-
-	//?有问题
-	// handleloadmorestate(){
-	// 	//var list = this.state.meslist;
-	// 	if (true) {
-	// 		this.setState({
-	// 			hasMoreState: true,
-	// 			loading: false
-	// 		})
-	// 	}
-	// }
-
 
 }
 
