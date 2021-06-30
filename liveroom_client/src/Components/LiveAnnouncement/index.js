@@ -1,10 +1,12 @@
 import React, { Component, Fragment } from 'react'
 import { BrowserRouter, Route } from 'react-router-dom'
-import { GlobalStyled } from './style.js'
+import { GlobalStyled } from '../../style.js'
 
-import './Announcement.css'
+import './index.css'
 
-const socket = require('socket.io-client')("https://live.xiaoblogs.cn:8085");
+// const socket = require('socket.io-client')("https://live.xiaoblogs.cn:8085");
+// const socket = require('socket.io-client')("http://192.168.31.67:8085");
+const socket = require('socket.io-client')("http://localhost:3000/liveroombackstage");
 
 class Announcement extends Component{
     constructor(props){

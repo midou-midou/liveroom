@@ -1,15 +1,21 @@
 import React, { Component, Fragment } from 'react';
-import SendMegsbox from './SendMegsbox';
-import Login from './Login';
-import store from './store/index';
-import { getupdatelistdataaction, changevideojssrc } from './store/actionCreate'
+import SendMegsbox from '../LiveTextarea';
+import Login from '../LiveLogin';
+import store from '../../../store/index';
+import { getupdatelistdataaction, changevideojssrc } from '../../../store/actionCreate'
 
-import './loginbg.css'
+import '../LiveLogin/index.css'
  
-const socket = require('socket.io-client')("https://live.xiaoblogs.cn:83");
-const sockettitle = require('socket.io-client')("https://live.xiaoblogs.cn:8085");
+// const socket = require('socket.io-client')("https://live.xiaoblogs.cn:83");
+// const sockettitle = require('socket.io-client')("https://live.xiaoblogs.cn:8085");
+// const socket = require('socket.io-client')("http://192.168.31.67:83");
+// const sockettitle = require('socket.io-client')("http://192.168.31.67:8085");
+// 下面的通信方式必须为长连接
+const socket = require('socket.io-client')("http://localhost:3000/chat");
+// 下面的通信方式可以不用长连接的方式
+const sockettitle = require('socket.io-client')("http://localhost:3000/liveroombackstage");
 
-class Tramsmitdata extends Component{
+class LivePanel extends Component{
 	
 	constructor(props){
 		super(props);
@@ -78,4 +84,4 @@ class Tramsmitdata extends Component{
 
 }
 
-export default Tramsmitdata;
+export default LivePanel;

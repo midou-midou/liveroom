@@ -1,10 +1,9 @@
 import React, {Component, Fragment} from 'react'
-//import ReactDOM from 'react-dom';
-import store from './store/index'
+import store from '../../../store/index'
 import { message } from 'antd'
-import { gethandleloginbuttonaction } from './store/actionCreate'
+import { gethandleloginbuttonaction } from '../../../store/actionCreate'
 
-import './loginbg.css'
+import './index.css'
 
 class Login extends Component{
 	constructor(props){

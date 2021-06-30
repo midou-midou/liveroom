@@ -1,13 +1,15 @@
 import React, { Component, Fragment } from 'react'
 import { BrowserRouter, Route } from 'react-router-dom'
 import { message } from 'antd'
-import { GlobalStyled } from './style.js'
-import store from './store/index'
-import { changevideojssrc } from './store/actionCreate'
+import { GlobalStyled } from '../../style.js'
+import store from '../../store/index'
+import { changevideojssrc } from '../../store/actionCreate'
 
-import './livevideo.css'
+import './index.css'
 
-const socket = require('socket.io-client')("https://live.xiaoblogs.cn:8085");
+// const socket = require('socket.io-client')("https://live.xiaoblogs.cn:8085");
+// const socket = require('socket.io-client')("http://192.168.31.67:8085");
+const socket = require('socket.io-client')("http://localhost:3000/liveroombackstage");
 
 const formdata = new FormData();
 const url = 'https://live.xiaoblogs.cn:8086';
@@ -18,9 +20,10 @@ class Livevideo extends Component{
 		this.state = {
 			video_srcurl: "https://imgdata.xiaoblogs.cn/Skystrike.mp4",
 			live_srcurl: 'https://live.xiaoblogs.cn/abcd/abcd.m3u8',
-			post: "https://imgdata.xiaoblogs.cn/liveroombg.png",
+			post: "../static/videoplaybg/liveroombg.png",
 			clientVideoSrc: "https://live.xiaoblogs.cn/abcd/abcd.m3u8"
 		};
+		
 		this.showPanelControl=this.showPanelControl.bind(this);
 		this.closePanel=this.closePanel.bind(this);
 		this.uploadPost=this.uploadPost.bind(this);
@@ -29,6 +32,7 @@ class Livevideo extends Component{
 		this.changePostInput=this.changePostInput.bind(this);
 		this.changeLiveInput=this.changeLiveInput.bind(this);
 		this.emitVideoUrltoServer=this.emitVideoUrltoServer.bind(this);
+
 		this.updateState=this.updateState.bind(this);
 		store.subscribe(this.updateState);
 	}
@@ -49,7 +53,7 @@ class Livevideo extends Component{
 								preload="auto"
 								poster={this.state.post} 
 								webkit-playsinline="true"
-								playsInline="true"
+								playsInline={true}
 								data-setup='{}'>
 								<source id="videojs-src" src={this.state.clientVideoSrc} type=""></source>
 							</video>

@@ -1,11 +1,11 @@
 import React, { Component, Fragment } from 'react'
 import { message } from 'antd'
-import Store from './store/index'
-import { GlobalStyled } from './style.js'
-import { getcleartextareaaction } from './store/actionCreate'
+import Store from '../../../store/index'
+import { GlobalStyled } from '../../../style.js'
+import { getcleartextareaaction } from '../../../store/actionCreate'
 
 import 'antd/dist/antd.css'
-import './sendmegboxbg.css'
+import './index.css'
 
 class SendMegsBox extends Component{
 	constructor(props){

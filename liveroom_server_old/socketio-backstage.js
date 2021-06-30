@@ -1,10 +1,12 @@
 var fs = require('fs');
-const httpsOption = {
-	key: fs.readFileSync("/usr/local/nginx/cert/3464649_live.xiaoblogs.cn.key"),
-	cert: fs.readFileSync("/usr/local/nginx/cert/3464649_live.xiaoblogs.cn.pem")
-}
-var uploadserver = require('https').createServer(httpsOption, onRequest);
-var socketioserver = require('https').createServer(httpsOption, handle);
+// const httpsOption = {
+// 	key: fs.readFileSync("/usr/local/nginx/cert/3464649_live.xiaoblogs.cn.key"),
+// 	cert: fs.readFileSync("/usr/local/nginx/cert/3464649_live.xiaoblogs.cn.pem")
+// }
+// var uploadserver = require('https').createServer(httpsOption, onRequest);
+// var socketioserver = require('https').createServer(httpsOption, handle);
+var uploadserver = require('http').createServer(onRequest);
+var socketioserver = require('http').createServer(handle);
 var formdata = require('formidable');
 var io = require('socket.io')(socketioserver);
 var audioIndex = 0;
@@ -19,6 +21,7 @@ function handle(req, res){
 	      res.writeHead(500);
 	      return res.end('Error');
 	    }
+		console.log("与服务器8085建立连接成功");
 	    res.writeHead(200);
 	    res.end(data);
   	};
@@ -58,7 +61,7 @@ var chatdata = {
 
 //socket.emit是socket.io中的发送数据，socket.on是socket.io中接收数据
 io.on('connect', (socket) => {
-
+	console.log("与服务器8085建立连接成功");
 	// db.getlist(processdata);
 	// function processdata(results){
 	// 	var result = results;

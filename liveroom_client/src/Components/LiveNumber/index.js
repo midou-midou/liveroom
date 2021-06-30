@@ -1,7 +1,7 @@
 import React, { Component,Fragment } from 'react'
-import store from './store/index'
+import store from '../../store/index'
 
-import './livepeoplenum.css'
+import './index.css'
 
 class Livepeoplenum extends Component{
 	constructor(props){
