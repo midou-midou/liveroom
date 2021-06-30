@@ -23,3 +23,5 @@ yarn-debug.log*
 yarn-error.log*
 liveroom_client/node_modules/
 .vscode/
+liveroom_server_old/node_modules/
+liveroom_server_new/liveroom_server_express/node_modules/

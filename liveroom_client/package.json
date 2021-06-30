@@ -1,6 +1,6 @@
 {
   "name": "liveroom",
-  "version": "0.1.0",
+  "version": "3.0.0",
   "private": true,
   "dependencies": {
     "antd": "^3.26.7",

@@ -1,5 +1,5 @@
 import React, { Fragment, Component } from 'react';
-import './chatboxbg.css'
+import '../chatbox.css'
 
 class Chatlistitem extends Component{
     constructor(props){
