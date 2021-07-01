@@ -18,7 +18,7 @@ const defaultstate = {
 	meslist: [
 		{
 			username: 'Rainbow Dash',
-			message: 'from PonyVillage'
+			usermeg: 'from PonyVillage'
 		}
 	],
 	//当前的在线观看直播的人数（和服务器建立的连接数，并不一定是准确的在线观看人数）

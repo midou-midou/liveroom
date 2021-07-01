@@ -2,10 +2,7 @@ import React, { Fragment, Component } from 'react';
 import '../chatbox.css'
 
 class Chatlistitem extends Component{
-    constructor(props){
-        super(props);
-        this.setColor2listitem=this.setColor2listitem.bind(this);
-    }
+    
     render(){
         return(
             <Fragment>
@@ -17,7 +14,7 @@ class Chatlistitem extends Component{
         )
     }
 
-    setColor2listitem(){
+    setColor2listitem = () => {
         var colorArray=['#FF6666','#006699','#0066CC','#336699','#CC6600','#FF0033','#339933','#FF9900'];
 		const num = Math.floor(Math.random() * colorArray.length);
 		return colorArray[num];

@@ -1,22 +1,21 @@
 import React, { Component, Fragment } from 'react'
 import { BrowserRouter, Route } from 'react-router-dom'
+import axios from 'axios'
 import { GlobalStyled } from '../../style.js'
 
 import './index.css'
-
-// const socket = require('socket.io-client')("https://live.xiaoblogs.cn:8085");
-// const socket = require('socket.io-client')("http://192.168.31.67:8085");
-const socket = require('socket.io-client')("http://localhost:3000/liveroombackstage");
+import { message } from 'antd'
 
 class Announcement extends Component{
+
+    state = {
+        title: ''
+    }
+
     constructor(props){
         super(props);
-        this.state = {
-            title: '',
-            Temptitle: ''
-        }
-        this.editTitle=this.editTitle.bind(this);
-        this.updateTitle=this.updateTitle.bind(this);
+        
+        // this.editTitle=this.editTitle.bind(this);
         this.blurFocus=this.blurFocus.bind(this);
         this.emitTitletoServer = this.emitTitletoServer.bind(this);
     }
@@ -33,11 +32,11 @@ class Announcement extends Component{
                     }></Route>
                     <Route path='/backstage' exact render={() =>
                         <div id="announce-div" className="announce-div-style">
-                            <span id="announce-title" className="announce-title-style">{this.state.title}</span>
+                            <span id="announce-title" ref={current => {this.titleSpan = current}} className="announce-title-style">{this.state.title}</span>
                             <input id="announce-title-edit" 
+                                ref={current => {this.titleInput = current}}
                                 className="announce-title-edit-style"                                
-                                onBlur={this.blurFocus}
-                                onChange={this.updateTitle}                                
+                                onBlur={this.blurFocus}                             
                                 ></input>
                             <button id="announce-title-edit-btn" className="announce-title-edit-btn-style" onClick={this.editTitle}>
                                 <svg className="icon-edit-title" aria-hidden="true">
@@ -52,42 +51,42 @@ class Announcement extends Component{
     }
 
     componentDidMount(){
-		socket.on('server', (data) => {
-			if(data === null){
-				console.log("data is null");
-            }
-			else if(this.state.title!==data.announce_title){
-				this.setState({
-                    title: data.announce_title
+        axios.get('/liveAnnounce/liveroomAnnounce').then(
+            rep => {
+                this.setState({
+                    title: rep.data.value
                 })
-			}
-		})
+            },
+            err => {
+                console.log(err);
+            }
+        )
 	}
 
-    editTitle(){
-        var inputDOM=document.getElementById('announce-title-edit');
-        var spanDOM=document.getElementById('announce-title');
-        inputDOM.style.display="block";
-        inputDOM.value=spanDOM.innerHTML;
-    }
-
-    updateTitle(e){
-        this.setState({
-            Temptitle: e.target.value
-        })
+    editTitle = () => {
+        const { titleInput, titleSpan } = this;
+        titleInput.style.display="block";
+        titleInput.value=titleSpan.innerHTML;
     }
 
     blurFocus(){
-        var inputDOM=document.getElementById('announce-title-edit');
-        inputDOM.style.display="none";
-        this.emitTitletoServer(this.state.Temptitle);
+        const {titleInput} = this;
+        titleInput.style.display = "none";
+        this.emitTitletoServer(titleInput.value);
     }
 
     emitTitletoServer(data){
-		var obj = {
-			announce_title: data
-        }
-        socket.emit('clienttitle', obj);
+		axios.get(`/sendAnnoProxy/sendAnno?anno=${data}`).then(
+            rep => {
+                message.success("修改直播间标题成功");
+                this.setState({
+                    title: data
+                })
+            },
+            err => {
+                message.error("修改直播间标题失败");
+            }
+        )
 	}
 
 }
