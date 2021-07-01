@@ -9,7 +9,6 @@ class Livepeoplenum extends Component{
 		this.state = {
 			livepeople: store.getState().livePeople
 		}
-		this.updateLivePeople = this.updateLivePeople.bind(this);
 		store.subscribe(this.updateLivePeople);
 	}
 
@@ -17,31 +16,30 @@ class Livepeoplenum extends Component{
 		return (
 			<Fragment>
 				<span id="online-name" className="online-name-style">在线人数:</span>
-				<span id="number_letter" className="letter">{this.state.livepeople}</span>
+				<span id="number_letter" ref={current => {this.numLetter = current}} className="letter">{this.state.livepeople}</span>
 			</Fragment>
 		);
 	}
 	
-	updateLivePeople(){
-		var DOM=document.getElementById('number_letter');
+	componentWillUpdate(){
+		const {numLetter} = this;
+		numLetter.className="letter behind"
+	}
+	
+	updateLivePeople = () => {
+		const {numLetter} = this;
 		setTimeout(() => {
-			DOM.className="letter out"
+			numLetter.className="letter out"
 		},90);
 		this.setState({
 			livepeople: store.getState().livePeople
 		})	
 	}
 
-	componentWillUpdate(){
-		var DOM=document.getElementById('number_letter');
-		DOM.className="letter behind"
-
-	}
-
 	componentDidUpdate(){
-		var DOM=document.getElementById('number_letter');
+		const {numLetter} = this;
 		setTimeout(() => {
-			DOM.className="letter in"
+			numLetter.className="letter in"
 		},410);
 	}
 

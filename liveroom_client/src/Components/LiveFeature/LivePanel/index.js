@@ -32,9 +32,9 @@ class LivePanel extends Component{
 				console.log("data is null");
 			}
 			else if(this.state.meslist.length!==data.meglist.length||this.state.livePeople!==data.livePeople){
-					const action = getupdatelistdataaction(data);
-					store.dispatch(action);
-				}
+				const action = getupdatelistdataaction(data);
+				store.dispatch(action);
+			}
 		});
 		sockettitle.on('server', (data) => {
 			if(data === null){

@@ -21,6 +21,16 @@ module.exports = function(app) {
             changeOrigin默认值为false，但我们一般将changeOrigin值设为true
             */
             pathRewrite: {'^/chat': ''} //去除请求前缀，保证交给后台服务器的是正常请求地址(必须配置)
+        }),
+        proxy('/liveAnnounce', {
+            target: 'http://localhost:8000',
+            changeOrigin: true,
+            pathRewrite: {'^/liveAnnounce': ''}
+        }),
+        proxy('/sendAnnoProxy', {
+            target: 'http://localhost:8000',
+            changeOrigin: true,
+            pathRewrite: {'^/sendAnnoProxy': ''}
         })
     )
 }

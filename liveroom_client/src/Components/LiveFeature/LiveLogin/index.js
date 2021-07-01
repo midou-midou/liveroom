@@ -6,23 +6,14 @@ import { gethandleloginbuttonaction } from '../../../store/actionCreate'
 import './index.css'
 
 class Login extends Component{
-	constructor(props){
-		super(props)
-		this.state = {
-			inputValue: ''
-		};
-		this.handleloginbutton = this.handleloginbutton.bind(this);
-		this.handleinputvalue = this.handleinputvalue.bind(this);
-	}
 
 	render(){
 		return (
 			<Fragment>
-					<input 
+					<input
+						ref={current => {this.inputUserName = current;}}
 						className="loginInput"
 						placeholder="请把用户名输到这里哦"
-						value={this.state.inputValue}
-						onChange={this.handleinputvalue}
 					/>
 						<button
 							className="loginButton"
@@ -34,16 +25,10 @@ class Login extends Component{
 		);
 	}
 
-	handleinputvalue(e){
-		this.setState({
-			inputValue: e.target.value
-		});
-	}
-
-	handleloginbutton(){
-		const action = gethandleloginbuttonaction(this.state.inputValue, true);
-		if(this.state.inputValue === ''){
-			//ReactDOM.render(<Alert type="error" message="Error text" banner />, document.getElementById('error'));
+	handleloginbutton = () => {
+		const {inputUserName} = this;
+		const action = gethandleloginbuttonaction(inputUserName.value, true);
+		if(inputUserName.value === ''){
 			message.error("要把你的名字告诉我呀!");
 		}else{
 			store.dispatch(action);
