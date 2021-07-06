@@ -1,5 +1,5 @@
 import React, { Component,Fragment } from 'react'
-import store from '../../store/index'
+import store from '../../store/index';
 
 import './index.css'
 
@@ -7,9 +7,9 @@ class Livepeoplenum extends Component{
 	constructor(props){
 		super(props);
 		this.state = {
-			livepeople: store.getState().livePeople
+			livepeople: 0
 		}
-		store.subscribe(this.updateLivePeople);
+		store.subscribe(this.updateState);
 	}
 
 	render(){
@@ -20,27 +20,28 @@ class Livepeoplenum extends Component{
 			</Fragment>
 		);
 	}
-	
-	componentWillUpdate(){
+
+	shouldComponentUpdate(){
+		const {numLetter} = this;
+		setTimeout(() => {
+			numLetter.className="letter in"
+		},410);
+		return true;
+	}
+
+	componentDidUpdate(){
 		const {numLetter} = this;
 		numLetter.className="letter behind"
 	}
-	
-	updateLivePeople = () => {
+
+	updateState = () => {
 		const {numLetter} = this;
 		setTimeout(() => {
 			numLetter.className="letter out"
 		},90);
 		this.setState({
 			livepeople: store.getState().livePeople
-		})	
-	}
-
-	componentDidUpdate(){
-		const {numLetter} = this;
-		setTimeout(() => {
-			numLetter.className="letter in"
-		},410);
+		})
 	}
 
 }

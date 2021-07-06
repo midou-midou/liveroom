@@ -7,10 +7,6 @@ import { changevideojssrc } from '../../store/actionCreate'
 
 import './index.css'
 
-// const socket = require('socket.io-client')("https://live.xiaoblogs.cn:8085");
-// const socket = require('socket.io-client')("http://192.168.31.67:8085");
-const socket = require('socket.io-client')("http://localhost:3000/liveroombackstage");
-
 const formdata = new FormData();
 const url = 'https://live.xiaoblogs.cn:8086';
 
@@ -19,9 +15,9 @@ class Livevideo extends Component{
 		super(props);
 		this.state = {
 			video_srcurl: "https://imgdata.xiaoblogs.cn/Skystrike.mp4",
-			live_srcurl: 'https://live.xiaoblogs.cn/abcd/abcd.m3u8',
-			post: "../static/videoplaybg/liveroombg.png",
-			clientVideoSrc: "https://live.xiaoblogs.cn/abcd/abcd.m3u8"
+			live_srcurl: 'http://ivi.bupt.edu.cn/hls/cctv1hd.m3u8',
+			post: "../../static/videoplaybg/liveroombg.png",
+			clientVideoSrc: "http://ivi.bupt.edu.cn/hls/cctv1hd.m3u8"
 		};
 		
 		this.showPanelControl=this.showPanelControl.bind(this);
@@ -44,9 +40,9 @@ class Livevideo extends Component{
 					<Route path='/' exact render={() => 
 						<Fragment>
 							<video
-								ref={(video) => { this.video = video; }}
+								ref={(current) => { this.videoPlay = current; }}
 								id="player"
-								className="video-js vjs-theme-sea vjs-big-play-centered  vjs-fluid"
+								className="video-js vjs-theme-sea vjs-big-play-centered vjs-fluid"
 								width="100%"
 								height="100%"
 								controls
@@ -62,7 +58,7 @@ class Livevideo extends Component{
 					<Route path='/backstage' exact render={() => 
 						<Fragment>
 							<video
-								ref={(video) => { this.video = video; }}
+								ref={(current) => { this.videoPlay = current; }}
 								id="player"
 								className="video-js vjs-theme-sea vjs-big-play-centered  vjs-fluid"
 								width="100%"
@@ -76,13 +72,15 @@ class Livevideo extends Component{
 								<source id="videojs-src" src={this.state.clientVideoSrc} type=""></source>
 							</video>
 							<div id="video-control-panel-div" className="video-control-panel-div-style">
+								{/* videoControlPanel按钮 */}
 								<button id="video-arousal-control-btn" className="video-arousal-control-btn-style" onClick={this.showPanelControl}>
 									<span id="video-arousal-control-span" className="video-arousal-control-span-style">VideoControl</span>
 									<svg className="icon-control-span" aria-hidden="true">
 										<use xlinkHref="#icon-setting"></use>
 									</svg>
 								</button>
-								<div id="video-control-panel-center" className="video-control-panel-center-style">
+								{/* videoControlPanel 播放器推流源设置相关面板 */}
+								<div ref={current => {this.videoPanelDOM = current;}} id="video-control-panel-center" className="video-control-panel-center-style">
 									<div id="panel-close-div" className="panel-close-div-style">
 										<button id="panel-close-btn" className="panel-close-btn-style" onClick={this.closePanel}>
 											<svg className="icon-panel-btn" aria-hidden="true">
@@ -91,8 +89,8 @@ class Livevideo extends Component{
 										</button>
 										<div id="url-div" className="url-div-style">
 											<div id="video-url-div" className="video-url-div-style">
-												<span id="video-url-span" className="video-url-span-style"></span>
-												<input id="video-url-input" className="video-url-input-style" type="file" accept="image/png" onChange={this.changePostInput}></input>
+												<span ref={c => this.urlSpan = c} id="video-url-span" className="video-url-span-style"></span>
+												<input ref={c => this.urlInput = c} id="video-url-input" className="video-url-input-style" type="file" accept="image/png" onChange={this.changePostInput}></input>
 												<button id="video-url-btn" className="video-url-btn-style" onClick={this.uploadPost} onChange={this.changePostInput}>
 													<svg className="icon-panel-btn" aria-hidden="true">
 														<use xlinkHref="#icon-upload"></use>
@@ -119,7 +117,7 @@ class Livevideo extends Component{
 										</div>
 									</div>
 								</div>
-								<div id="fade-background-div" className="fade-background-div-style"></div>
+								<div ref={current => {this.fadeDOM = current}} id="fade-background-div" className="fade-background-div-style"></div>
 							</div>
 						</Fragment>
 					}></Route>
@@ -129,42 +127,40 @@ class Livevideo extends Component{
 	}
 
 	showPanelControl(){
-		var paneldivDOM=document.getElementById('video-control-panel-center');
-		var fadeDOM=document.getElementById('fade-background-div');
-		paneldivDOM.style.display="block";
+		const {fadeDOM, videoPanelDOM} = this;
+		videoPanelDOM.style.display="block";
 		fadeDOM.style.display="block";
 	}
 
 	closePanel(){
-		var paneldivDOM=document.getElementById('video-control-panel-center');
-		var fadeDOM=document.getElementById('fade-background-div');
-		paneldivDOM.style.display="none";
+		const {fadeDOM, videoPanelDOM} = this;
+		videoPanelDOM.style.display="none";
 		fadeDOM.style.display="none";
 	}
 
 	uploadPost(){
-		fetch(url, {
-			method: 'POST',
-			mode: 'no-cors',
-			body: formdata,
-		}).then(response => {
-			message.success("图片上传成功啦,刷新下浏览器看看自己的海报吧!(●ˇ∀ˇ●)");
-		}).catch(error => {
-			message.error("由于不可抗力,图片上传失败X﹏X")
-		});		
+		// fetch(url, {
+		// 	method: 'POST',
+		// 	mode: 'no-cors',
+		// 	body: formdata,
+		// }).then(response => {
+		// 	message.success("图片上传成功啦,刷新下浏览器看看自己的海报吧!(●ˇ∀ˇ●)");
+		// }).catch(error => {
+		// 	message.error("由于不可抗力,图片上传失败X﹏X")
+		// });		
 	}
 
 	editliveurl(){
-		var inputDOM=document.getElementById('live-url-input');
-		var spanDOM=document.getElementById('live-url-span');
-		inputDOM.style.display="block";
-		inputDOM.value=spanDOM.innerHTML;
+		const {urlSpan, urlInput} = this;
+		urlInput.style.display="block";
+		urlInput.value=urlSpan.innerHTML;
 	}
 
 	blurLiveInput(){
 		const action = changevideojssrc(this.state.clientVideoSrc);
-		var inputDOM=document.getElementById('live-url-input');
-		inputDOM.style.display="none";
+		const {urlInput} = this;
+		urlInput.style.display="none";
+		// 判断videojs接受的视频格式是不是m3u8
 		if(".m3u8" === this.state.clientVideoSrc.substr(-5)){
 			store.dispatch(action);
 			this.emitVideoUrltoServer(this.state.clientVideoSrc);
@@ -190,7 +186,7 @@ class Livevideo extends Component{
 		var obj = {
 			videojsurl: data
         }
-        socket.emit('clientvideojsurl', obj);
+        //  socket.emit('clientvideojsurl', obj);
 	}
 
 	updateState(){
