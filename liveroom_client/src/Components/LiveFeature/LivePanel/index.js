@@ -6,14 +6,8 @@ import { getupdatelistdataaction, changevideojssrc } from '../../../store/action
 
 import '../LiveLogin/index.css'
  
-// const socket = require('socket.io-client')("https://live.xiaoblogs.cn:83");
-// const sockettitle = require('socket.io-client')("https://live.xiaoblogs.cn:8085");
-// const socket = require('socket.io-client')("http://192.168.31.67:83");
-// const sockettitle = require('socket.io-client')("http://192.168.31.67:8085");
 // 下面的通信方式必须为长连接
-const socket = require('socket.io-client')("http://localhost:3000/chat");
-// 下面的通信方式可以不用长连接的方式
-const sockettitle = require('socket.io-client')("http://localhost:3000/liveroombackstage");
+const socket = require('socket.io-client')("http://localhost:3000");
 
 class LivePanel extends Component{
 	
@@ -31,20 +25,10 @@ class LivePanel extends Component{
 			if (data === null){
 				console.log("data is null");
 			}
-			else if(this.state.meslist.length!==data.meglist.length||this.state.livePeople!==data.livePeople){
-					const action = getupdatelistdataaction(data);
-					store.dispatch(action);
-				}
-		});
-		sockettitle.on('server', (data) => {
-			if(data === null){
-				console.log("data is null");
-			}
-			else if(this.state.videojs_source_src!==data.videojsurl){
-				const action = changevideojssrc(data.videojsurl);
+			else if(this.state.meslist.length!==data.meglist.length||this.state.livePeople!==data.liveRealPeople){
+				const action = getupdatelistdataaction(data);
 				store.dispatch(action);
 			}
-
 		});
 	}
 

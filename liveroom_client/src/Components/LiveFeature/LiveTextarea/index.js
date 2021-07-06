@@ -8,17 +8,12 @@ import 'antd/dist/antd.css'
 import './index.css'
 
 class SendMegsBox extends Component{
+	
 	constructor(props){
 		super(props);
 		this.state = {
-			content: '',
 			username: Store.getState().userinfo.username
 		}
-		this.setmessage = this.setmessage.bind(this);
-		this.sendmessage = this.sendmessage.bind(this);
-		this.cleartextarea = this.cleartextarea.bind(this);
-		this.onEnterPress = this.onEnterPress.bind(this);
-		this.updateStoreUsername = this.updateStoreUsername.bind(this);
 		Store.subscribe(this.updateStoreUsername);
 	}
 
@@ -32,20 +27,18 @@ class SendMegsBox extends Component{
 					<span>{this.state.username}:</span>
 				</div>
 				<textarea
+					ref={current => {this.megTextarea = current}}
 					id="sendTextArea"
 					placeholder="聊点什么..."
 					rows={1}
 					className="sendboxTextArea"
-					onChange={this.setmessage}
 					onKeyPress={this.onEnterPress}
-					value={this.state.content}
 				/>
 				<button 
 					id="sendmessage_btn"
 					className="sendboxSendButton"
 					onClick={this.sendmessage}
 					>
-					{/* {<span className="iconfont">&#xe643;</span>} */}
 					<svg className="icon" aria-hidden="true">
 						<use xlinkHref="#icon-Sendmessage"></use>
 					</svg>
@@ -57,36 +50,29 @@ class SendMegsBox extends Component{
 		);
 	}
 
-	setmessage(e){
-		this.setState({
-			content: e.target.value
-		});
-	}
-
-	sendmessage(){
-		if(this.state.content === ''){
+	sendmessage = () => {
+		const {megTextarea} = this;
+		if(megTextarea.value === ''){
 			message.error("什么都不说,点什么发送(╯▔皿▔)╯");
 		}else{
-			this.props.emitMegtoServer(this.state.content);
-			this.setState({
-				content: ''
-			});
+			this.props.emitMegtoServer(megTextarea.value);
+			megTextarea.value = '';
 		}
 	}
 
-	onEnterPress(e){
+	onEnterPress = (e) => {
 		e.preventDefault();
 		if(e.charCode===13||e.charCode===108){
 			this.sendmessage();
 		}
 	}
 
-	cleartextarea(){
+	cleartextarea = () => {
 		const action = getcleartextareaaction('');
 		Store.dispatch(action);
 	}
 
-	updateStoreUsername(){
+	updateStoreUsername = () => {
 		this.setState({
 			username:Store.getState().userinfo.username})
 	}
