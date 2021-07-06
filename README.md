@@ -113,6 +113,6 @@ React应用构建
 
 > 这个项目是用React的官方脚手架构建的 [Create React App](https://github.com/facebook/create-react-app).
 
-#### 现在的版本是v3.0
+#### 现在的版本是v3.1
 
 #### [直播间链接](http://live.xiaoblogs.cn)
