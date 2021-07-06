@@ -46,7 +46,7 @@ export default (state = defaultstate, action) => {
 	if (action.type === UPDATE_LIST_DATA) {
 		const newState = JSON.parse(JSON.stringify(state));
 		newState.meslist = action.value.meglist;
-		newState.livePeople = action.value.livePeople;
+		newState.livePeople = action.value.liveRealPeople;
 		newState.announce_title = action.value.announce_title;
 		return newState;
 	}
