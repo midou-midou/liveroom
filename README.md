@@ -33,7 +33,8 @@ React应用构建
 6. 将本地的build目录上传到服务器，并且配置服务器的nginx或者apache
 7. React应用部署完毕
 
-服务端
+服务端   
+#### PS.此方法适用于old文件夹下的文件
 1. 将liveroom_server文件夹上传到服务器
 2. 通过npm命令安装服务端所需模块
     `npm install`
@@ -45,7 +46,19 @@ React应用构建
     + 使用pm2(需要使用npm安装)
     `pm2 start socket.js`
     `pm2 start socket-backstage.js`
-4. 后台OK了
+4. 后台OK了   
+   
+#### 此方法为新的开服方法   
+1. 切换到liveroom_server_new文件夹下   
+2. 通过npm命令安装服务端所需模块
+    `npm install`
+3. 之后通过node或者用npm下的pm2模块启动服务端js文件
+    + 使用node(建议后台运行)
+    `nohup node ./app.js & > nohup.out 2>&1`
+
+    + 使用pm2(需要使用npm安装)
+    `pm2 start socket.js`
+    `pm2 start socket-backstage.js`
 
 ### 3. 之后就通过url访问吧
 > 如果要访问后台配置直播间的页面要在url后面加上/backstage
