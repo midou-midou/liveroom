@@ -57,8 +57,7 @@ React应用构建
     `nohup node ./app.js & > nohup.out 2>&1`
 
     + 使用pm2(需要使用npm安装)
-    `pm2 start socket.js`
-    `pm2 start socket-backstage.js`
+    `pm2 start app.js`
 
 ### 3. 之后就通过url访问吧
 > 如果要访问后台配置直播间的页面要在url后面加上/backstage
