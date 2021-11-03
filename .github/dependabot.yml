@@ -6,4 +6,3 @@ updates:
     rebase-strategy: auto
     schedule:
       interval: "daily"
-      timezone: "05:00 UTC"
