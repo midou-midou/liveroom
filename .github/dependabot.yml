@@ -1,16 +1,21 @@
 version: 2
 updates:
   - directory: "/liveroom_client"
-    open-pull-requests-limit: 5
     package-ecosystem: "npm"
     rebase-strategy: auto
     schedule:
       interval: "daily"
+    labels:
+      - "直播间client依赖"
   - package-ecosystem: "npm"
     directory: /liveroom_server_new
     schedule:
       interval: "daily"
+    labels:
+      - "直播间server_new依赖"
   - package-ecosystem: "npm"
     directory: /liveroom_server_old
     schedule:
       interval: "daily"
+    labels:
+      - "直播间server_old依赖"
