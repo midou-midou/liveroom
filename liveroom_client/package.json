@@ -3,8 +3,8 @@
   "version": "3.0.0",
   "private": true,
   "dependencies": {
-    "antd": "^4.16.13",
-    "axios": "^0.18.1",
+    "antd": "^3.26.20",
+    "axios": "^0.21.2",
     "bootstrap": "^3.4.1",
     "danmaku": "^2.0.2",
     "flv.js": "^1.6.2",
