@@ -93,17 +93,17 @@ React应用构建
 ### 直播间1.0
 > 当时正是Ultra2019的时候，为了给无法看Y2B的小伙伴云蹦迪的乐趣，想到了直播。不能用其他平台直播境外的东西，所以就自己用Red5和videojs5.x的版本弄了一个简易的网页。   
 
-<img src="https://imgdata.xiaoblogs.cn/liveroomv1.png" width="90%">   
+<img src="https://static.xiaoblogs.cn/img/liveroomv1.png" width="90%">   
 
 ### 直播间2.0
 > 直播间1.0的最大问题就是rtmp推流只能用flash播放，手机不支持，没法在手机上看。之后正巧学习了React框架就索性用了这个框架。播放器啊、聊天框啊都是用的[Ant Design](https://ant.design/docs/react/introduce-cn)第三方的UI组件库。播放器是[FlowPlayer](https://www.npmjs.com/package/react-flow-player)是H5的播放器，也就用HLS推流了。之后就一直没有了更新，期间也是因为其他事情，实习，考研什么的。直到2020年的这个多灾多难的假期，有了时间准备更新下直播间。作为颜控，受不了2.0的圆角设计和UI了，哈哈O(∩_∩)O   
 
-<img src="https://imgdata.xiaoblogs.cn/liveroomv2.png" width="90%">   
+<img src="https://static.xiaoblogs.cn/img/liveroomv2.png" width="90%">   
 
 ### 直播间3.0
 > 直播间3.0全新设计了UI，我使用的是Balsamiq Wireframes 4，在liveroom_design的文件夹里面有设计样式图片。本来打算是重新重做直播间，其实说到也算是。参考设计是Y2B啦。做完了UI并且实现了逻辑后发现直播间的标题和播放器海报，直播源不能更改。后面又想到了用前端的另一个页面直接可以对这些元素修改。到最后终于做完啦，开始直播喽！   
 
-<img src="https://imgdata.xiaoblogs.cn/liveroomv3.png" width="90%">   
+<img src="https://static.xiaoblogs.cn/img/liveroomv3.png" width="90%">   
 
 
 #### 最后的话
