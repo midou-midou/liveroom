@@ -7,7 +7,8 @@ import { getupdatelistdataaction, changevideojssrc } from '../../../store/action
 import '../LiveLogin/index.css'
  
 // 下面的通信方式必须为长连接
-const socket = require('socket.io-client')("http://localhost:3000");
+import { io } from 'socket.io-client'
+const socket = io("http://localhost:3000");
 
 class LivePanel extends Component{
 	
