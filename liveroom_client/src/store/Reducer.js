@@ -15,12 +15,7 @@ const defaultstate = {
 		isfirstlogin: false
 	},
 	//从后台拿到的聊天列表(不能直接将用户发的消息添加到这个list当中，这里数据发生更改会影响到往数据库中的操作)
-	meslist: [
-		{
-			username: 'Rainbow Dash',
-			usermeg: 'from PonyVillage'
-		}
-	],
+	meslist: [],
 	//当前的在线观看直播的人数（和服务器建立的连接数，并不一定是准确的在线观看人数）
 	livePeople: 0,
 	videojs_source_src: ""

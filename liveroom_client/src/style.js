@@ -17,12 +17,11 @@ export const GlobalStyled = createGlobalStyle`
         -moz-osx-font-smoothing: grayscale;
     }
     .icon {
-        width: 1.5em;
-        height: 1.5em;
+        width: 1.5em; height: 1.5em;
         vertical-align: -0.15em;
         fill: currentColor;
         overflow: hidden;
-    }
+     }
     .icon-edit-title {
         width: 2.2em;
         height: 2.2em;

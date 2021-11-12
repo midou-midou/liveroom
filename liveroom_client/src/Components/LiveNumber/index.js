@@ -35,6 +35,9 @@ class Livepeoplenum extends Component{
 	}
 
 	updateState = () => {
+		if(this.state.livepeople === store.getState().livePeople){
+			return;
+		}
 		const {numLetter} = this;
 		setTimeout(() => {
 			numLetter.className="letter out"

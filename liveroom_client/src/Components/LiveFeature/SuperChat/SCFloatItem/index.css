@@ -1,0 +1,33 @@
+.sc-float-container{
+    display: flex;
+    position: relative;
+}
+.sc-float-item{
+    position: relative;
+    margin-right: 5px;
+    margin-bottom: 3px;
+    border-radius: 10px;
+}
+.sc-float-name, .sc-float-money{
+    margin: 2px 5px 5px 5px;
+    color: white;
+}
+
+.mask{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #ccc;
+    opacity: .6;
+    border-radius: 10px;
+    animation: grayDispear var(--playTime) linear forwards;
+}
+
+@keyframes grayDispear {
+    0%{
+        width: 100%;
+    }
+    100%{
+        width: 0%;
+    }
+}

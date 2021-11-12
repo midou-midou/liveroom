@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import SendMegsbox from '../LiveTextarea';
+import SendMegsbox from '../LiveTextarea/index';
 import Login from '../LiveLogin';
 import store from '../../../store/index';
 import { getupdatelistdataaction, changevideojssrc } from '../../../store/actionCreate'
@@ -40,8 +40,11 @@ class LivePanel extends Component{
 	//将user发送的消息上传到后端，后台和前端的上传消息的API
 	emitMegtoServer(data){
 		var object = {
+			isSC: data.type,
 			username: this.state.userinfo.username,
-			usermeg: data
+			usermeg: data.msg,
+			color: data.sccolor?data.sccolor:'',
+			money: data.scmoney?data.scmoney:''
 		}
 		socket.emit('client', object);
 	}
@@ -64,7 +67,6 @@ class LivePanel extends Component{
 				</Fragment>
 				);
 		};
-		return <Fragment></Fragment>;
 	}
 
 }
