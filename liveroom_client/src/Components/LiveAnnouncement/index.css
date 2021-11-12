@@ -18,7 +18,7 @@ button#announce-title-edit-btn.announce-title-edit-btn-style{
     background-color: transparent;
     position: absolute;
     right: 0;
-    top: 2.7em;
+    top: 1.7em;
 }
 input#announce-title-edit.announce-title-edit-style{
     display: none;

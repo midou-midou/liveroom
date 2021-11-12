@@ -31,6 +31,7 @@
     border-left: 0px;
     border-right: 0px;
     padding: 20px 0;
+    margin-top: 30px;
   }
   div.chat-container-bg{
     position: absolute;
@@ -41,4 +42,8 @@
   div#gotobottom.gotobottom-style{
     position: relative;
     display: none;
+  }
+  div#liveroom_desc_container{
+    padding: 0 30px;
+    margin-top: 30px;
   }

@@ -8,7 +8,7 @@ import { changevideojssrc } from '../../store/actionCreate'
 import './index.css'
 
 const formdata = new FormData();
-const url = 'https://live.xiaoblogs.cn:8086';
+// const url = 'https://live.xiaoblogs.cn:8086';
 
 class Livevideo extends Component{
 	constructor(props){
@@ -38,7 +38,7 @@ class Livevideo extends Component{
 				<Fragment>
 					<GlobalStyled />
 					<Switch>
-						<Route path='/' exact render={() => 
+						<Route path='/liveroom' exact render={() => 
 							<Fragment>
 								<video
 									ref={(current) => { this.videoPlay = current; }}
@@ -56,7 +56,7 @@ class Livevideo extends Component{
 								</video>
 							</Fragment>
 							} />
-						<Route path='/backstage' exact render={() => 
+						<Route path='/liveroom/backstage' exact render={() => 
 							<Fragment>
 								<video
 									ref={(current) => { this.videoPlay = current; }}
@@ -122,7 +122,7 @@ class Livevideo extends Component{
 								</div>
 							</Fragment>
 						} />
-						<Redirect to="/" />
+						<Redirect to="/liveroom" />
 					</Switch>
 				</Fragment>
 			</BrowserRouter>

@@ -9,7 +9,7 @@ import { message } from 'antd'
 class Announcement extends Component{
 
     state = {
-        title: ''
+        title: '欢迎来到liveroom_v3'
     }
 
     constructor(props){
@@ -26,12 +26,12 @@ class Announcement extends Component{
                 <Fragment>
                     <GlobalStyled />
                     <Switch>
-                    <Route path='/' exact render={() =>
+                    <Route path='/liveroom' exact render={() =>
                         <div id="announce-div" className="announce-div-style">
                             <span id="announce-title" className="announce-title-style">{this.state.title}</span>
                         </div>
                     } />
-                    <Route path='/backstage' exact render={() =>
+                    <Route path='/liveroom/backstage' exact render={() =>
                         <div id="announce-div" className="announce-div-style">
                             <span id="announce-title" ref={current => {this.titleSpan = current}} className="announce-title-style">{this.state.title}</span>
                             <input id="announce-title-edit" 
@@ -46,7 +46,7 @@ class Announcement extends Component{
                             </button>
                         </div>
                     } />
-                    <Redirect to="/" />
+                    <Redirect to="/liveroom" />
                     </Switch>
                 </Fragment>
             </BrowserRouter>
@@ -79,17 +79,20 @@ class Announcement extends Component{
     }
 
     emitTitletoServer(data){
-		axios.get(`/sendAnnoProxy/sendAnno?anno=${data}`).then(
-            rep => {
-                message.success("修改直播间标题成功");
-                this.setState({
-                    title: data
-                })
-            },
-            err => {
-                message.error("修改直播间标题失败");
-            }
-        )
+        this.setState({
+            title: data
+        })
+		// axios.get(`/sendAnnoProxy/sendAnno?anno=${data}`).then(
+        //     rep => {
+        //         message.success("修改直播间标题成功");
+        //         this.setState({
+        //             title: data
+        //         })
+        //     },
+        //     err => {
+        //         message.error("修改直播间标题失败");
+        //     }
+        // )
 	}
 
 }

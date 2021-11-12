@@ -3,7 +3,8 @@ import {
  	CLEARUSERSENDMESSAGE,
  	HANDLE_LOGIN_USERNAME,
 	UPDATE_LIST_DATA,
-	CHANGE_VIDEOJS_SRC
+	CHANGE_VIDEOJS_SRC,
+	DEMO_ADD_MES_TO_LIST
  } 
  from './actionType'
 
@@ -30,6 +31,11 @@ export const getupdatelistdataaction = (value) => ({
 
 export const changevideojssrc = (value) => ({
 	type: CHANGE_VIDEOJS_SRC,
+	value
+})
+
+export const demo_addmsgtolist = (value) => ({
+	type: DEMO_ADD_MES_TO_LIST,
 	value
 })
 

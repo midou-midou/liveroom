@@ -3,7 +3,8 @@ import {
  	CLEARUSERSENDMESSAGE,
  	HANDLE_LOGIN_USERNAME,
 	UPDATE_LIST_DATA,
-	CHANGE_VIDEOJS_SRC
+	CHANGE_VIDEOJS_SRC,
+	DEMO_ADD_MES_TO_LIST
  } 
  from './actionType'
 
@@ -48,6 +49,11 @@ export default (state = defaultstate, action) => {
 	if (action.type === CHANGE_VIDEOJS_SRC) {
 		const newState = JSON.parse(JSON.stringify(state));
 		newState.videojs_source_src = action.value;
+		return newState;
+	}
+	if (action.type === DEMO_ADD_MES_TO_LIST) {
+		const newState = JSON.parse(JSON.stringify(state));
+		newState.meslist.push(action.value);
 		return newState;
 	}
 	return state;

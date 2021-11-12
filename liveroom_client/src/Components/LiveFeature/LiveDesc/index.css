@@ -1,0 +1,15 @@
+.desc-container{
+    border: 1px solid #dcdcdc;
+    width: 100%;
+    color: black;
+    font-size: 1em;
+    font-weight: 500;
+    word-wrap: break-word;
+    line-height: 1.1em;
+    word-spacing: .2em;
+    text-align: center;
+}
+
+.desc-container>div{
+    padding: 1em 0;
+}

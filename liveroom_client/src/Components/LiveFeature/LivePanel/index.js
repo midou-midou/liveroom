@@ -2,13 +2,13 @@ import React, { Component, Fragment } from 'react';
 import SendMegsbox from '../LiveTextarea/index';
 import Login from '../LiveLogin';
 import store from '../../../store/index';
-import { getupdatelistdataaction, changevideojssrc } from '../../../store/actionCreate'
+import { getupdatelistdataaction, changevideojssrc, demo_addmsgtolist } from '../../../store/actionCreate'
 
 import '../LiveLogin/index.css'
  
 // 下面的通信方式必须为长连接
-import { io } from 'socket.io-client'
-const socket = io("http://localhost:3000");
+// import { io } from 'socket.io-client'
+// const socket = io("http://localhost:3000");
 
 class LivePanel extends Component{
 	
@@ -22,15 +22,15 @@ class LivePanel extends Component{
 
 	//当初始化整个页面组件被初次挂载的时候执行
 	componentDidMount(){
-		socket.on('server', (data) => {
-			if (data === null){
-				console.log("data is null");
-			}
-			else if(this.state.meslist.length!==data.meglist.length||this.state.livePeople!==data.liveRealPeople){
-				const action = getupdatelistdataaction(data);
-				store.dispatch(action);
-			}
-		});
+		// socket.on('server', (data) => {
+		// 	if (data === null){
+		// 		console.log("data is null");
+		// 	}
+		// 	else if(this.state.meslist.length!==data.meglist.length||this.state.livePeople!==data.liveRealPeople){
+		// 		const action = getupdatelistdataaction(data);
+		// 		store.dispatch(action);
+		// 	}
+		// });
 	}
 
 	updatestate(){
@@ -46,7 +46,8 @@ class LivePanel extends Component{
 			color: data.sccolor?data.sccolor:'',
 			money: data.scmoney?data.scmoney:''
 		}
-		socket.emit('client', object);
+		store.dispatch(demo_addmsgtolist(object));
+		// socket.emit('client', object);
 	}
 
 	//进行一个条件渲染，判断条件是根据用户是不是第一次加载页面来定
