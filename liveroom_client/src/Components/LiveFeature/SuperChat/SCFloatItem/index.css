@@ -13,14 +13,19 @@
     color: white;
 }
 
-.mask{
+.gray{
     position: absolute;
     width: 100%;
     height: 100%;
     background-color: #ccc;
     opacity: .6;
-    border-radius: 10px;
     animation: grayDispear var(--playTime) linear forwards;
+}
+
+.mask{
+    position: absolute;
+    width: 10px;
+    height: 10px;
 }
 
 @keyframes grayDispear {
