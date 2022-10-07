@@ -25,8 +25,8 @@ class SCFloatItem extends Component {
         let show = this.state.isTimeOut ? 'none': 'block';
         return (
             <div className="sc-float-item" style={{backgroundColor: `${this.props.color}`, display: `${show}`}}>
-                <div className="mask" style={{'--playTime': `${this.state.waitTime}s`}}></div>
                 <div className="sc-float-container">
+                    <div className="mask" style={{'--playTime': `${this.state.waitTime}s`}}></div>
                     <div className="sc-float-name">{this.props.name}</div>
                     <div className="sc-float-money">${this.props.money}</div>
                 </div>
