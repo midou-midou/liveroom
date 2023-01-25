@@ -5,7 +5,7 @@ import Livevideo from './Components/Livevideo';
 import LivePanel from './Components/LiveFeature/LivePanel';
 import Livepeoplenum from './Components/LiveNumber';
 import Announcement from './Components/LiveAnnouncement';
-import './static/liveroom_icon/iconfont';
+import './static/liveroom_icon/iconfont.css';
 
 ReactDOM.render(<Chatlist />, document.getElementById('chatbox'));
 ReactDOM.render(<LivePanel />, document.getElementById('sendbox'));

@@ -1,6 +1,7 @@
 div.sendTextArea-and-sendbtn{
 	position: relative;
 	font-size: medium;
+	width: 100%;
 }
 div#username{
 	display: inline;
@@ -70,12 +71,19 @@ textarea:focus::-moz-placeholder { /* Mozilla Firefox 19+ 适配火狐 */
 textarea:focus:-ms-input-placeholder { /* Internet Explorer 10+  适配ie*/
     color: #BDCADA;
 }
-button.sendboxSendButton{
+button{
 	border: none;
 	background: transparent;
 	outline: none;
 	padding: 0;
 	position: absolute;
 	margin-top: 1em;
+}
+
+.sendboxSendButton{
 	right: 0;
+}
+
+.sc-btn{
+	right: 2em;
 }

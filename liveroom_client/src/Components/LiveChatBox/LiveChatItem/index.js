@@ -2,12 +2,21 @@ import React, { Fragment, Component } from 'react';
 import '../chatbox.css'
 
 class Chatlistitem extends Component{
+    state = {
+        color: 'black'
+    }
+
+    componentDidMount(){
+        this.setState({
+            color: this.setColor2listitem()
+        })
+    }
     
     render(){
         return(
             <Fragment>
                 <div id="list-item" className="list-item-style">
-                    <span id="list-item-name" className="list-item-name-style" style={{backgroundColor:this.setColor2listitem()}}>{this.props.username}</span>:
+                    <span id="list-item-name" className="list-item-name-style" style={{backgroundColor:this.state.color}}>{this.props.username}</span>:
                     <span id="list-item-content" className="list-item-content-style">{this.props.usermeg}</span>
                 </div>
             </Fragment>
