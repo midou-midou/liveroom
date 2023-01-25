@@ -1,6 +1,7 @@
 div.list-container {
   position: relative;
-  height: 450px;
+  padding: 10px;
+  height: 420px;
   border-radius: 0;
   background-color: transparent;
   overflow: auto;
@@ -26,7 +27,6 @@ div#list-container.list-container::-webkit-scrollbar-track{
 }
 div#list-item.list-item-style{
   line-height: 25px;
-  margin: 0 10px;
   font-weight: 500;
 }
 div#list-item span{ 
@@ -47,4 +47,35 @@ span#list-item-content.list-item-content-style{
   padding: 0 2px;
   color: black;
   font-weight: 650;
+}
+
+.sc-small-container{
+  position: relative;
+  width: 100%;
+  height: 30px;
+  border-bottom: 1px solid #dcdcdc;
+  margin-bottom: 5px;
+  display: flex;
+  overflow-y: hidden;
+  overflow-x: auto;
+}
+
+div.sc-scollor{
+  width : 10px;
+  height: auto;
+  margin: 0 auto;
+}
+div.sc-small-container::-webkit-scrollbar{
+  width: 10px;
+  height: 2.5px;
+}
+div.sc-small-container::-webkit-scrollbar-thumb{
+  border-radius: 0px;
+  /* box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2); */
+  background   : #CCCCCC;
+}
+div.sc-small-container::-webkit-scrollbar-track{
+  /* box-shadow   : inset 0 0 5px rgba(0, 0, 0, 0.2); */
+  border-radius: 0px;
+  background   : #ededed;
 }

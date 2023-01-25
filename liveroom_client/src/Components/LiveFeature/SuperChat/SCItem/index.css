@@ -1,0 +1,35 @@
+.sc-list-item-style{
+    position: relative;
+    border-radius: 5px;
+    margin: 10px 0;
+    box-shadow: 0px 2px 1px #a3a3a3;
+}
+
+span.sc-list-item-name-style, span.sc-list-item-content-style{
+    display: block;
+    
+}
+
+span.sc-list-item-name-style{
+    font-weight: 500;
+    margin: 0px 10px;
+    padding: 7px 0;
+    color: #dcdcdc;
+    border-bottom: 1px solid #d3d3d3;
+}
+
+span.sc-list-item-content-style{
+    font-weight: 600;
+    padding: 10px;
+    color: white;
+    word-wrap: break-word;
+}
+
+span.sc-list-item-money{
+    font-size: .5em;
+    font-weight: 300;
+    color: white;
+    position: absolute;
+    right: 10px;
+    bottom: 5px;
+}

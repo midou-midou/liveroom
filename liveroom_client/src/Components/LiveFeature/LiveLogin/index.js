@@ -15,12 +15,12 @@ class Login extends Component{
 						className="loginInput"
 						placeholder="请把用户名输到这里哦"
 					/>
-						<button
+						<div
 							className="loginButton"
 							onClick={
 								this.handleloginbutton
 							}
-						>Login/登录</button>
+						>Login/登录</div>
 			</Fragment>
 		);
 	}

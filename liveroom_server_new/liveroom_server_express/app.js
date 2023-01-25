@@ -31,8 +31,11 @@ socketServer.on('connect', (socket) => {
     liveChatData.liveRealPeople++;
 	socket.on('client', function replyfromclient(data){
 		liveChatData.meglist.push({
+			isSC: data.isSC,
 			username: data.username,
 			usermeg: data.usermeg,
+			color: data.color?data.color:'',
+			money: data.money?data.money:''
 		});
 	});
 	//如果断开了一个直播间的链接，直播间的当前在线人数就会减一个

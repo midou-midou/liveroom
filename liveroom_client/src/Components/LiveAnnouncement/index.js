@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react'
-import { BrowserRouter, Route } from 'react-router-dom'
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
 import axios from 'axios'
 import { GlobalStyled } from '../../style.js'
 
@@ -25,11 +25,12 @@ class Announcement extends Component{
             <BrowserRouter>
                 <Fragment>
                     <GlobalStyled />
+                    <Switch>
                     <Route path='/' exact render={() =>
                         <div id="announce-div" className="announce-div-style">
                             <span id="announce-title" className="announce-title-style">{this.state.title}</span>
                         </div>
-                    }></Route>
+                    } />
                     <Route path='/backstage' exact render={() =>
                         <div id="announce-div" className="announce-div-style">
                             <span id="announce-title" ref={current => {this.titleSpan = current}} className="announce-title-style">{this.state.title}</span>
@@ -44,7 +45,9 @@ class Announcement extends Component{
                                 </svg>                              
                             </button>
                         </div>
-                    }></Route>
+                    } />
+                    <Redirect to="/" />
+                    </Switch>
                 </Fragment>
             </BrowserRouter>
         );

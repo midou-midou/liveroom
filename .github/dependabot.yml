@@ -1,0 +1,15 @@
+version: 2
+updates:
+  - directory: "/liveroom_client"
+    package-ecosystem: "npm"
+    rebase-strategy: auto
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "npm"
+    directory: /liveroom_server_new
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "npm"
+    directory: /liveroom_server_old
+    schedule:
+      interval: "daily"
